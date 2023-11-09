@@ -3,57 +3,106 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <title>居酒屋ゲーム</title>
+    <link rel="stylesheet" href="./css/login.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&family=Zen+Kaku+Gothic+New&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&family=Zen+Kaku+Gothic+New&display=swap"
+      rel="stylesheet"
+    />
+    <title>ログイン</title>
   </head>
   <body>
-    <div class="starter">
-      <div class="hands">
-        <button id="gu" class="button button_gu">👊</button>
-        <button id="choki" class="button button_choki">🤘</button>
-        <button id="pa" class="button button_pa">✋</button>
-      </div>
-      <div class="description">
-        <p>1 お互いに👊で勝つと、焼き鳥をランダムで一本選ぶ</p>
-        <p>2 お互いに🤘で勝つと、お酒をランダムで一杯選ぶ</p>
-        <p>3 お互いに✋で勝つと、50円分の割引ポイントを獲得する</p>
-        <p>4 20回して勝った数の多い方が勝ち。負けた方は全額奢り（笑）</p>
-      </div>
-    </div>
-    <div class="container">
-      <div class="user_section">
-        <div class="toggle_section">
-          <button class="toggle_btn_1">内訳</button>
-          <div class="toggle_box_1"></div>
-        </div>
-        <div class="user_box">
-          <p>ふッけいくん(福岡)</p>
-          <div class="user_img">
-            <img src="./img/fukkeikunn.jpeg" alt="" />
-          </div>
-          <div class="stamp user_stamp">奢り！！</div>
-        </div>
-      </div>
-
-      <div class="computer_section">
-        <div class="toggle_section">
-          <button class="toggle_btn_2">内訳</button>
-          <div class="toggle_box_2"></div>
-        </div>
-        <div class="computer_box">
-          <p>ピーポくん(東京)</p>
-          <div class="computer_img">
-            <img src="./img/pipokun.jpeg" alt="" />
-          </div>
-          <div class="stamp computer_stamp">奢り！！</div>
-        </div>
+    <div class="login_box">
+      <div class="login_container">
+        <h1>Login</h1>
+        <form action="" class="form_name">
+          <label for="id">ニックネーム</label>
+          <input type="text" name="" id="id" placeholder="fukkeikunn" />
+        </form>
+        <form action="" class="form_pass">
+          <label for="pass">PASSWORD</label>
+          <input type="text" name="" id="pass" placeholder="pipokunn" />
+        </form>
+        <button type="submit">ENTER</button>
       </div>
     </div>
-    <div class="wrapper"></div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="./main.js"></script>
-     
+    <script>
 
+      const loginContainer = document.querySelector('.login_container');
+      const titelH1 = document.querySelector('h1');
+      const formName = document.querySelector('.form_name');
+      const formPass = document.querySelector('.form_pass');
+      const loginName = 'fukkeikunn';
+      const loginPass = 'pipokunn';
+      const inputName = document.querySelector('#id');
+      const inputPass = document.querySelector('#pass');
+      const btn = document.querySelector('button');
+
+// loadingの要素を生成(login_conainer>div>span*3+h2)
+      function makingLoader() {
+        const div = document.createElement('div');
+        div.classList.add('loader')
+        const fragment = document.createDocumentFragment();
+        for (let span = 0; span < 3; span++){
+          const span = document.createElement('span');
+          fragment.appendChild(span);
+        }
+        div.appendChild(fragment);
+        const h2 = document.createElement('h2');
+        h2.innerText = "Now Loading..."
+        div.appendChild(h2);
+        loginContainer.appendChild(div);
+      }
+
+// ログイン成功時に発火する関数
+      function success(){
+        titelH1.innerText = "Success!!";
+        titelH1.style.color ="rgb(29, 182, 21)";
+        formName.remove();
+        formPass.remove();
+        btn.remove();
+        makingLoader();
+      }
+
+// IDが違う時に発火する関数
+      function confirmId(){
+        const idP = document.createElement("p");
+        idP.innerText = "IDが違います";
+        idP.classList.add("color_red");
+        formName.appendChild(idP);
+      }
+
+// パスワードが違う時に発火する関数
+      function confirmPass(){
+        const idPass = document.createElement("p");
+        idPass.innerText = "パスワードが違います";
+        idPass.classList.add("color_red");
+        formPass.appendChild(idPass);
+      }
+
+// ENTERボタンを押した時の処理
+      btn.addEventListener('click', () => {
+        if (loginName === inputName.value && loginPass === inputPass.value) {
+          localStorage.setItem("id", inputName.value);
+          localStorage.setItem("pass", inputPass.value);
+          success();
+        } else if (loginName !== inputName.value) {
+          confirmId();
+        } else {
+          confirmPass();
+        }
+
+
+      });
+    </script>
   </body>
 </html>

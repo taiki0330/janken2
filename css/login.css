@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  /* font-family: 'Roboto', sans-serif;
+  font-family: 'Zen Kaku Gothic New', sans-serif;; */
+}
+
+body {
+  background-image: url(../img/494d197041849a54325c3c71e6b7892d.jpg);
+}
+
+.login_box {
+  background-color: rgba(199, 208, 204, 0.7);
+  width: 800px;
+  height: 700px;
+  margin: 50px auto;
+  border-radius: 30px;
+}
+
+.login_container {
+      padding: 20px 10px;
+}
+
+h1 {
+      text-align: center;
+      font-size: 60px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      color: rgb(130, 90, 170);
+}
+
+form{
+      display: block;
+      width: 300px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+}
+
+label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 20px;
+      font-weight: bold;
+      color: rgb(130, 90, 170);
+}
+input {
+      width: 100%;
+      display: block;
+      margin-bottom: 5px;
+      font-size: 20px;
+      border-radius: 10px;
+      border: none;
+      box-shadow: 0 0 30px rgb(72, 72, 72);
+      padding: 10px 15px;
+}
+
+button {
+      background-color: rgb(130, 90, 170);
+      color: #fff;
+      width: 300px;
+      padding: 20px 0;
+      font-size: 28px;
+      border-radius: 20px;
+      border: none;
+      box-shadow: 0 0 30px rgb(72, 72, 72);
+      display: block;
+      margin: 100px auto;
+}
+
+/* ID、パスワード違う文字 */
+.color_red {
+      font-size: 20px;
+      color: rgb(237, 0, 0);
+      font-weight: bold;
+}
+
+/* ローディング */
+.loader {
+      width: 300px;
+      height: 300px;
+      margin: 50px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+}
+
+.loader span {
+      position: absolute;
+      border: 5px solid #8af7ce;
+      width: 100%;
+      height: 100%;
+      animation: animate 5s linear infinite;
+}
+
+.loader span:nth-child(1) {
+      border-radius: 74% 26% 39% 61% / 37% 53% 47% 63% ;
+}
+
+.loader span:nth-child(2) {
+      animation-direction: reverse;
+      border-radius: 32% 68% 26% 74% / 63% 26% 74% 37% ;
+}
+
+.loader span:nth-child(3) {
+      animation-delay: 3s;
+      border-radius: 26% 74% 82% 18% / 60% 45% 55% 40% ;
+}
+
+
+@keyframes animate {
+      0% {
+            transform: rotate(0deg);
+      }
+      100% {
+            transform: rotate(360deg);
+      }
+}
+
+.loader h2 { 
+      color: #8af7ce;
+      font-weight: 700;
+}
+
