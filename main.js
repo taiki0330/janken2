@@ -86,7 +86,7 @@ $('#gu, #choki, #pa').on('click', function () {
   // コンピューターの手を決定
   const computerHand = hands[i];
   // ２０回未満のとき
-  if (count < 5) {
+  if (count < 20) {
     // 勝敗の処理
     if (playerHand === computerHand) {
       // 新しいPタグを作成
