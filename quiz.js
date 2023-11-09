@@ -72,15 +72,19 @@ const btnLength = $btnItem.length;
 
 const quizRandomInd = Math.floor(Math.random() * quizLength);
 
+if (count % 2 === 0) {
+
+}
+
 // クイズの問題文と選択肢を表示
 const quizSelect = function () {
   // ボタンのインデックス番号(0-4)を取得
   let btnIndex = 0;
   // ボタンの個数(ここでは５個)以下の場合
   while (btnIndex < btnLength) {
-    // クイズの問題文にクイズ配列の１個目の問題文を表示
+    // クイズの問題文にクイズ配列の１個目の問題文を入れる
     $quizText.textContent = quiz[quizIndex].question;
-    // ボタン1のテキストにクイズ配列の１個目の質面を表示
+    // ボタン1のテキストにクイズ配列の１個目の質面を入れる
     $btnItem[btnIndex].textContent = quiz[quizIndex].answer[btnIndex];
     btnIndex++;
   }
@@ -120,15 +124,17 @@ while (eventIndex < btnLength) {
   eventIndex++;
 }
 
-// const $quizContainer = document.querySelector('.quiz_container')
 
-// const textField = document.createComment('div');
-// textField.classlist.add('type-text');
-// $quizContainer.appendChild(textField);
+const $quizContainer = document.querySelector('.quiz_container')
+$quizContainer.empty();
 
-// const typeArea = document.createComment('textarea');
-// typeArea.classlist.add('type-area');
-// $quizContainer.appendChild(typeArea);
+const textField = document.createComment('div');
+textField.classlist.add('type-text');
+$quizContainer.appendChild(textField);
+
+const typeArea = document.createComment('textarea');
+typeArea.classlist.add('type-area');
+$quizContainer.appendChild(typeArea);
 
 const typeDisplay = document.querySelector('.type-text');
 const typeInput = document.querySelector('.type-area');

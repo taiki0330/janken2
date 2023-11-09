@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>居酒屋ゲーム</title>
+  </head>
+  <body>
+    <div class="starter">
+      <div class="hands">
+        <button id="gu" class="button button_gu">👊</button>
+        <button id="choki" class="button button_choki">🤘</button>
+        <button id="pa" class="button button_pa">✋</button>
+      </div>
+      <div class="description">
+        <p>1 お互いに👊で勝つと、焼き鳥をランダムで一本選ぶ</p>
+        <p>2 お互いに🤘で勝つと、お酒をランダムで一杯選ぶ</p>
+        <p>3 お互いに✋で勝つと、50円分の割引ポイントを獲得する</p>
+        <p>4 20回して勝った数の多い方が勝ち。負けた方は全額奢り（笑）</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="user_section">
+        <div class="toggle_section">
+          <button class="toggle_btn_1">内訳</button>
+          <div class="toggle_box_1"></div>
+        </div>
+        <div class="user_box">
+          <p>ふッけいくん(福岡)</p>
+          <div class="user_img">
+            <img src="./img/fukkeikunn.jpeg" alt="" />
+          </div>
+          <div class="stamp user_stamp">奢り！！</div>
+        </div>
+      </div>
+
+      <div class="computer_section">
+        <div class="toggle_section">
+          <button class="toggle_btn_2">内訳</button>
+          <div class="toggle_box_2"></div>
+        </div>
+        <div class="computer_box">
+          <p>ピーポくん(東京)</p>
+          <div class="computer_img">
+            <img src="./img/pipokun.jpeg" alt="" />
+          </div>
+          <div class="stamp computer_stamp">奢り！！</div>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./main.js"></script>
+     
+
+  </body>
+</html>

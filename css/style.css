@@ -214,14 +214,15 @@ h1 {
   font-size: 32px;
 }
 
-.quiz_select_box{
+
+.quiz_select_box ul{
   margin-top: 50px;
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
 
-.quiz_select_box li {  
+.quiz_select_box ul li {  
   width: 200px;
   padding: 10px 5px;
   text-align: center;
