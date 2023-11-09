@@ -67,6 +67,10 @@ button {
       box-shadow: 0 0 30px rgb(72, 72, 72);
       display: block;
       margin: 100px auto;
+      cursor: pointer;
+}
+button:hover {
+      background-color: rgb(130, 90, 170, 0.8);
 }
 
 /* ID、パスワード違う文字 */

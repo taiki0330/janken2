@@ -228,3 +228,32 @@ h1 {
   text-align: center;
   font-size: 28px;
 }
+
+.color_green {
+  margin-top: 40px;
+  font-size: 40px;
+  text-align: center;
+  color: rgb(0, 255, 4);
+}
+
+.color_green {
+  margin-top: 40px;
+  font-size: 40px;
+  text-align: center;
+  color: rgb(255, 60, 0);
+}
+
+.display_none {
+  display: none;
+  background-color: rgb(130, 90, 170);
+  color: #fff;
+  width: 300px;
+  padding: 20px 0;
+  font-size: 28px;
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 0 30px rgb(72, 72, 72);
+  display: block;
+  margin: 40px 20px 50px 400px;
+  cursor: pointer;
+}

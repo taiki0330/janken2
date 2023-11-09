@@ -70,12 +70,6 @@ const $btnItem = document.querySelectorAll('.quiz_item');
 // ボタンの数(ここでは５個)を取得
 const btnLength = $btnItem.length;
 
-const quizRandomInd = Math.floor(Math.random() * quizLength);
-
-if (count % 2 === 0) {
-
-}
-
 // クイズの問題文と選択肢を表示
 const quizSelect = function () {
   // ボタンのインデックス番号(0-4)を取得
@@ -92,16 +86,44 @@ const quizSelect = function () {
 // １問目を表示
 quizSelect();
 
+// quiz_select_boxを取得
+const quizSelectBox = document.querySelector('.quiz_select_box');
+
+// // 正解（緑色）と表示する関数
+// function answerCorrect() {
+//   let h2 = document.createElement('h2');
+//   h2.innerText = '正解';
+//   h2.classList.add('color_green');
+//   quizSelectBox.appendChild(h2)
+// }
+
+// function removeAnswer(){
+//   if(quizSelectBox.hasChildNodes(h2)) {
+//     quizSelectBox.removeChild(quizSelectBox.secondChild);
+//   }
+// }
+
+// // 不正解（赤色）と表示する関数
+// function answerIncorrect() {
+//   let h2 = document.createElement('h2');
+//   h2.innerText = `不正解!
+//   正解は${quiz[quizIndex].correct}`;
+//   h2.classList.add('color_red');
+//   quizSelectBox.appendChild(h2);
+// }
+
 // クリックの処理
 const clickEvent = function (e) {
   // クイズ配列の答えと選択したボタンのテキストを比較
   if (quiz[quizIndex].correct === e.target.textContent) {
-    alert('正解!');
+    alert('正解');
     score++;
   } else {
     alert(`不正解!
-正解は${quiz[quizIndex].correct}`);
+   正解は${quiz[quizIndex].correct}`);
   }
+
+  // removeAnswer();
   //   １問目が終われば月にいく
   quizIndex += 1;
   // 今のクイズがクイズ配列の長さ(ここでは５個)より小さいとき
@@ -122,63 +144,4 @@ while (eventIndex < btnLength) {
   });
   //   次へ
   eventIndex++;
-}
-
-
-const $quizContainer = document.querySelector('.quiz_container')
-$quizContainer.empty();
-
-const textField = document.createComment('div');
-textField.classlist.add('type-text');
-$quizContainer.appendChild(textField);
-
-const typeArea = document.createComment('textarea');
-typeArea.classlist.add('type-area');
-$quizContainer.appendChild(typeArea);
-
-const typeDisplay = document.querySelector('.type-text');
-const typeInput = document.querySelector('.type-area');
-
-// inputにテキスト入力、合っているかどうかの判定
-typeInput.addEventListener('input', () => {
-  const sentenceArray = typeDisplay.querySelectorAll('span');
-  const arrayValue = sentenceArray.value.split('');
-
-  sentenceArray.forEach((characterSpan, index) => {
-    if ((arrayValue[index] == null)) {
-      characterSpan.classList.remove('correct');
-      characterSpan.classList.remove('incorrect');
-    } else if (characterSpan.innerText == arrayValue[index]) {
-      characterSpan.classList.add('correct');
-      characterSpan.classList.remove('incorrect');
-    } else {
-      characterSpan.classList.add('incorrect');
-      characterSpan.classList.remove('correct');
-    }
-  });
-});
-
-const RANDOM_SENTENCE_URL_API = 'https://api.quotable.io/random';
-// 非同期でランダムな文章を取得する
-function GetRandomSentence() {
-  return fetch(RANDOM_SENTENCE_URL_API)
-    .then((response) => response.json())
-    .then((data) => data.content);
-}
-
-// ランダムな文章を取得して、表示する
-async function RenderNextSentence() {
-  const sentence = await GetRandomSentence();
-  typeDisplay.innerText = '';
-  // 文章を１文字ずつ分解して、spanタグを表示する
-  let oneText = sentence.split('');
-
-  oneText.forEach((character) => {
-    const characterSpan = document.createElement('span');
-    characterSpan.innerText = character;
-    typeDisplay.appendChild(characterSpan);
-    // characterSpan.classList.add("correct");
-  });
-
-  tyepInput.innerText = '';
 }
