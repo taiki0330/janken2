@@ -132,6 +132,8 @@ const clickEvent = function (e) {
     quizSelect();
   } else {
     alert(`終了! あなたの正解数は${score} / ${quizIndex} です`);
+    localStorage.clear();
+    window.location.href = './index.html';
   }
 };
 

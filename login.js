@@ -6,7 +6,9 @@ const loginName = '太郎';
 const loginPass = 'taro';
 const inputName = document.querySelector('#id');
 const inputPass = document.querySelector('#pass');
-const btn = document.querySelector('button');
+const enterBtn = document.querySelector('.enter');
+const signupBtn = document.querySelector('.sign_up');
+const firstSignup = document.querySelector('.first_sign');
 
 // ７秒後に次のページに遷移
 let startTIme;
@@ -39,6 +41,7 @@ function makingLoader() {
   h2.innerText = "Now Loading..."
   div.appendChild(h2);
   loginContainer.appendChild(div);
+  // 上の関数をここで発火
   startTimer();
 }
 
@@ -48,7 +51,10 @@ function success(){
   titelH1.style.color ="rgb(29, 182, 21)";
   formName.remove();
   formPass.remove();
-  btn.remove();
+  enterBtn.remove();
+  signupBtn.remove();
+  firstSignup.remove();
+  // 上の関数をここで発火
   makingLoader();
 }
 
@@ -68,17 +74,37 @@ function confirmPass(){
   formPass.appendChild(idPass);
 }
 
+
+// 登録されたデータを取得
+let getName = "";
+let getPass = "";
+const getData = JSON.parse(localStorage.getItem("userdata") || "[]");
+  getName = getData.name;
+  getPass = getData.pass; 
+
+
+
+
+
 // ENTERボタンを押した時の処理
-btn.addEventListener('click', () => {
-  if (loginName === inputName.value && loginPass === inputPass.value) {
-    localStorage.setItem("id", inputName.value);
-    localStorage.setItem("pass", inputPass.value);
+enterBtn.addEventListener('click', () => {
+  if (getName === inputName.value && getPass === inputPass.value) {
+    // localStorage.setItem("id", inputName.value);
+    // localStorage.setItem("pass", inputPass.value);
+    // 上の関数をここで発火
     success();
-  } else if (loginName !== inputName.value) {
+  } else if (getName !== inputName.value) {
+    // 上の関数をここで発火
       confirmId();
   } else {
-    confirmPass();
+    // 上の関数をここで発火
+      confirmPass();
   }
 
 
 });
+
+// SIGN UPボタンを押した時の処理
+signupBtn.addEventListener('click', () => {
+  window.location.href = "./signup.html"
+})
